@@ -42,7 +42,7 @@ public class Main extends Application {
         Button btCf = new Button("C->F");
         hbButton.getChildren().add(btCf);
         btCf.setOnAction((EventHandler) event -> {
-            double c = Integer.parseInt(tfCelsius.getText());
+            double c = Double.parseDouble(tfCelsius.getText());
             double f = c / (5.0/9.0) + 32;
             tfFahrenheit.setText(String.valueOf(f));
         });
@@ -52,7 +52,7 @@ public class Main extends Application {
         btFc.setOnAction(new EventHandler() {
             @Override
             public void handle(Event event) {
-                double f = Integer.parseInt(tfFahrenheit.getText());
+                double f = Double.parseDouble(tfFahrenheit.getText());
                 double c = (f - 32.0) * 5.0 / 9.0;
                 tfCelsius.setText(String.valueOf(c));
             }
