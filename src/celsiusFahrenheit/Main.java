@@ -1,6 +1,8 @@
 package celsiusFahrenheit;
 
 import javafx.application.Application;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
@@ -39,10 +41,22 @@ public class Main extends Application {
         
         Button btCf = new Button("C->F");
         hbButton.getChildren().add(btCf);
-    
+        btCf.setOnAction((EventHandler) event -> {
+            double c = Integer.parseInt(tfCelsius.getText());
+            double f = c / (5.0/9.0) + 32;
+            tfFahrenheit.setText(String.valueOf(f));
+        });
+        
         Button btFc = new Button("F->C");
         hbButton.getChildren().add(btFc);
-        
+        btFc.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                double f = Integer.parseInt(tfFahrenheit.getText());
+                double c = (f - 32.0) * 5.0 / 9.0;
+                tfCelsius.setText(String.valueOf(c));
+            }
+        });
         
         stage.setTitle("Celsius <> Fahrenheit");
         stage.setScene(new Scene(root));
